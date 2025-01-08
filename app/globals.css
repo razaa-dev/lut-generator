@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3%;
+    --foreground: 0 0% 98%;
+    
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 98%;
+ 
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 98%;
+ 
+    --primary: 151 55% 41.8%;
+    --primary-foreground: 0 0% 98%;
+ 
+    --secondary: 172 84% 31.4%;
+    --secondary-foreground: 0 0% 98%;
+ 
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 63.9%;
+ 
+    --accent: 142 70% 55%;
+    --accent-foreground: 0 0% 98%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+ 
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 142 70% 55%;
+ 
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Hide scrollbar for all elements */
+* {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none !important;  /* Chrome, Safari and Opera */
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+  &::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
+
+/* Image Comparison Slider */
+.image-compare-slider {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: white;
+  cursor: col-resize;
+  z-index: 20;
+}
+
+.image-compare-handle {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: white;
+  border-radius: 50%;
+  left: -15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: col-resize;
+}
+
+.image-compare-handle.top {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.image-compare-handle.bottom {
+  bottom: 50%;
+  transform: translateY(50%);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Neon glow effect */
+.neon-glow {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(0, 255, 102, 0.2),
+                0 0 12px rgba(0, 255, 102, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.3),
+                0 0 15px rgba(0, 255, 102, 0.15);
+  }
+}
+
+/* Custom range input styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  margin: 10px 0;
+  background: #2D3748;
+  border-radius: 4px;
+  outline: none;
+  position: relative;
+}
+
+/* Thumb styles */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #00FF66;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: -5px;
+  border: 2px solid #1A202C;
+  box-shadow: 0 0 6px rgba(0, 255, 102, 0.3);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #00FF66;
+  border: 2px solid #1A202C;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 6px rgba(0, 255, 102, 0.3);
+}
+
+/* Hover state */
+input[type="range"]:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+}
+
+/* Track styles */
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: #2D3748;
+  border-radius: 4px;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: #2D3748;
+  border-radius: 4px;
+}
+
+/* Active track */
+input[type="range"]:active::-webkit-slider-runnable-track {
+  background: #4A5568;
+}
+
+input[type="range"]:active::-moz-range-track {
+  background: #4A5568;
+}
+
+/* Select box styling */
+select {
+  appearance: none;
+  background-color: #1A1F2C;
+  color: #9CA3AF;
+}
+
+select option {
+  background-color: #1A1F2C;
+  color: #9CA3AF;
+  padding: 8px;
+}
+
+select:focus {
+  border-color: #4A5568;
+  outline: none;
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-secondary;
+  }
+  
+  .bg-gradient {
+    @apply bg-gradient-to-r from-primary via-accent to-secondary;
+  }
+  
+  .border-gradient {
+    @apply border-2 border-transparent bg-gradient-to-r from-primary via-accent to-secondary;
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) padding-box, 
+      linear-gradient(#fff 0 0);
+    mask: 
+      linear-gradient(#fff 0 0) padding-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-neon-glow;
+  }
+  
+  .hover-glow-accent {
+    @apply transition-all duration-300 hover:shadow-accent-glow;
+  }
+  
+  .button-primary {
+    @apply bg-primary text-white px-6 py-2.5 rounded-lg font-medium
+           transition-all duration-300
+           hover:bg-primary-hover hover:shadow-neon-glow
+           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+  }
+  
+  .button-secondary {
+    @apply bg-secondary text-white px-6 py-2.5 rounded-lg font-medium
+           transition-all duration-300
+           hover:bg-secondary-hover hover:shadow-neon-glow
+           focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background;
+  }
+  
+  .button-accent {
+    @apply bg-accent text-white px-6 py-2.5 rounded-lg font-medium
+           transition-all duration-300
+           hover:bg-accent-hover hover:shadow-accent-glow
+           focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background;
+  }
+  
+  .card {
+    @apply bg-card rounded-lg p-6 border border-border
+           transition-all duration-300
+           hover:border-primary/50 hover:shadow-neon-glow;
+  }
+  
+  .input-primary {
+    @apply bg-background border border-border rounded-lg px-4 py-2
+           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background
+           hover:border-primary/50;
+  }
+  
+  .heading-gradient {
+    @apply font-bold text-gradient;
+  }
+}
